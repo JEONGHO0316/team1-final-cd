@@ -7,5 +7,5 @@ resources:
 # AWS 전용 이미지 설정 (처음엔 비워둬도 됨, CI가 채워줌)
 images:
 - name: my-app-image
-  newName: public.ecr.aws/nginx/nginx # 임시 주소 (처음 에러 방지용)
-  newTag: latest
+  newName: 639242342449.dkr.ecr.ap-northeast-2.amazonaws.com/gitactions
+  newTag: v1.0.5

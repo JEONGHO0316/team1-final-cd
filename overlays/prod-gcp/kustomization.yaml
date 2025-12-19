@@ -7,5 +7,5 @@ resources:
 # GCP 전용 이미지 설정
 images:
 - name: my-app-image
-  newName: nginx # 임시 주소
-  newTag: latest
+  newName: asia-northeast3-docker.pkg.dev/kdt2-final-project-t1/gitactions-hjh/gitactions
+  newTag: v1.0.5
