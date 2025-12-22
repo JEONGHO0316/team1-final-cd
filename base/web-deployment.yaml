@@ -18,7 +18,7 @@ spec:
       containers:
       - name: nginx
         # 업로드 한 이미지 사용
-        image: 639242342449.dkr.ecr.ap-northeast-2.amazonaws.com/gitactions:web
+        image: petclinic-image-placeholder 
         imagePullPolicy: Always
         ports:
         - containerPort: 80
