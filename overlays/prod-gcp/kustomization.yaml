@@ -20,4 +20,4 @@ patches:
 images:
 - name: petclinic-image-placeholder
   newName: asia-northeast3-docker.pkg.dev/kdt2-final-project-t1/gitactions-hjh/gitactions
-  newTag: v2.2.2
+  newTag: v1.0
