@@ -11,3 +11,4 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     # 4. (선택) 헬스체크 성공 코드 지정
     alb.ingress.kubernetes.io/success-codes: '200'
+    alb.ingress.kubernetes.io/load-balancer-name: final-project
