@@ -6,4 +6,4 @@ resources:
 images:
 - name: petclinic-image-placeholder
   newName: asia-northeast3-docker.pkg.dev/my-project/petclinic
-  newTag: v1.0.0  # 👈 CI가 Tag Push때 이 부분을 수정합니다.
+  newTag: v1.0  # 👈 CI가 Tag Push때 이 부분을 수정합니다.
