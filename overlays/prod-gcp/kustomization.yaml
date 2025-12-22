@@ -8,4 +8,4 @@ resources:
 images:
 - name: my-app-image
   newName: asia-northeast3-docker.pkg.dev/kdt2-final-project-t1/gitactions-hjh/gitactions
-  newTag: v1.0.5
+  newTag: v1.0
