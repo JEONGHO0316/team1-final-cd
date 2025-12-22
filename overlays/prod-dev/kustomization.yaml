@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+
+# 여기서 별명을 진짜 ECR 주소로 매핑
+images:
+- name: petclinic-image-placeholder
+  newName: 639242342449.dkr.ecr.ap-northeast-2.amazonaws.com/gitactions
+  newTag: latest  # 👈 CI가 이 부분을 계속 수정하게 됩니다.

@@ -1,19 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app
+  name: petclinic-was
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: my-app
   template:
-    metadata:
-      labels:
-        app: my-app
     spec:
       containers:
-      - name: server
-        image: my-app-image  # 👈 중요! 나중에 CI가 이걸 실제 주소로 바꿔칠겁니다.
+      - name: petclinic
+        image: petclinic-image-placeholder  # 👈 여기가 핵심! 나중에 갈아끼움
         ports:
-        - containerPort: 8080 # 본인 앱 포트에 맞게 수정 (예: 8080)
+        - containerPort: 8080

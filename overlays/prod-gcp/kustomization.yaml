@@ -1,11 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-
 resources:
 - ../../base
 
-# GCP 전용 이미지 설정
 images:
-- name: my-app-image
-  newName: nginx # 임시 주소
-  newTag: latest
+- name: petclinic-image-placeholder
+  newName: asia-northeast3-docker.pkg.dev/my-project/petclinic
+  newTag: v1.0.0  # 👈 CI가 Tag Push때 이 부분을 수정합니다.
