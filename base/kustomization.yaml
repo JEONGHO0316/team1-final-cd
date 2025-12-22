@@ -1,3 +1,7 @@
 resources:
-- deployment.yaml
-- service.yaml
+  - was-deployment.yaml
+  - was-service.yaml
+  - web-deployment.yaml
+  - web-service.yaml
+  - ingress.yaml
+  - ingressclass.yaml
