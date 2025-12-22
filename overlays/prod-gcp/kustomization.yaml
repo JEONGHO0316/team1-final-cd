@@ -3,7 +3,7 @@ kind: Kustomization
 
 # 1. 이름 앞에 gcp- 접두사 붙이기 (ArgoCD 경고 해결 핵심)
 # 결과: petclinic-web -> gcp-petclinic-web
-namePrefix: gcp-
+#namePrefix: gcp-
 
 # 2. 라벨 추가 (선택사항)
 commonLabels:

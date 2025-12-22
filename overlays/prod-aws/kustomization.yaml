@@ -3,7 +3,7 @@ kind: Kustomization
 
 # 1. 이름 앞에 접두사 붙이기 (ArgoCD 경고 해결 핵심!)
 # 결과: petclinic-web -> aws-petclinic-web으로 이름이 바뀜
-namePrefix: aws-
+# namePrefix: aws-
 
 # 2. AWS인지 GCP인지 라벨로 구분 (선택사항이지만 권장)
 commonLabels:
