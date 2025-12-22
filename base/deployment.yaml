@@ -4,10 +4,19 @@ metadata:
   name: petclinic-was
 spec:
   replicas: 1
+  # ✅ [추가 1] 어떤 파드를 관리할지 정하는 규칙 (필수!)
+  selector:
+    matchLabels:
+      app: petclinic
+
   template:
+    # ✅ [추가 2] 파드에 붙일 실제 이름표 (위랑 똑같아야 함!)
+    metadata:
+      labels:
+        app: petclinic
     spec:
       containers:
       - name: petclinic
-        image: petclinic-image-placeholder  # 👈 여기가 핵심! 나중에 갈아끼움
+        image: petclinic-image-placeholder
         ports:
         - containerPort: 8080
