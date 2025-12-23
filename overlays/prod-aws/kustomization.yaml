@@ -20,7 +20,7 @@ patches:
 images:
 - name: petclinic-image-placeholder
   newName: 639242342449.dkr.ecr.ap-northeast-2.amazonaws.com/gitactions
-  newTag: v1.0
+  newTag: main
 
 # 2. [추가] Web 이미지 설정
 - name: petclinic-web-placeholder    # base/web-deployment.yaml에 있는 이름 (확인필수!)
