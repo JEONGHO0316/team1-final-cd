@@ -9,7 +9,12 @@ resources:
 
 
 patches:
-- path: ingress-patch.yaml
+- target:
+    group: networking.k8s.io
+    version: v1
+    kind: Ingress
+    name: petclinic-ingress # Base에 정의된 이름
+  path: ingress-patch.yaml
 
 
 # 여기서 별명을 진짜 ECR 주소로 매핑
@@ -17,3 +22,8 @@ images:
 - name: petclinic-image-placeholder
   newName: 639242342449.dkr.ecr.ap-northeast-2.amazonaws.com/gitactions
   newTag: main
+
+- name: petclinic-web-placeholder    # base/web-deployment.yaml에 있는 이름 (확인필수!)
+  newName: 639242342449.dkr.ecr.ap-northeast-2.amazonaws.com/gitactions
+  newTag: web
+
