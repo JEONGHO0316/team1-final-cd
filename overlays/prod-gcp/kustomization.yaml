@@ -17,15 +17,12 @@ patches:
 - path: ingress-patch.yaml
 
 # 4. 이미지 설정 (작성해주신 내용 그대로 유지)
+
+# 2. [추가] Web 이미지 설정
 images:
 - name: petclinic-image-placeholder
   newName: asia-northeast3-docker.pkg.dev/kdt2-final-project-t1/gitactions-hjh/gitactions
-  newTag: v1.0
-
-# 2. [추가] Web 이미지 설정
-- name: petclinic-web-placeholder    # base/web-deployment.yaml에 있는 이름
+  newTag: v3.3
+- name: petclinic-web-placeholder
   newName: asia-northeast3-docker.pkg.dev/kdt2-final-project-t1/gitactions-hjh/web
   newTag: v1
-
-
-
