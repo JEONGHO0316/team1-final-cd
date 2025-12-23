@@ -7,4 +7,4 @@ resources:
 images:
 - name: petclinic-image-placeholder
   newName: 639242342449.dkr.ecr.ap-northeast-2.amazonaws.com/gitactions
-  newTag: latest  # 👈 CI가 이 부분을 계속 수정하게 됩니다.
+  newTag: main
