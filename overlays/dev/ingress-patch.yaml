@@ -9,3 +9,16 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/load-balancer-name: final-project-dev
     alb.ingress.kubernetes.io/success-codes: '200'
+    alb.ingress.kubernetes.io/actions.fixed-4xx: >
+      {"type":"fixed-response","fixedResponseConfig":{"statusCode":"400","contentType":"text/plain","messageBody":"Bad Request"}}
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: fixed-4xx
+            port:
+              name: use-annotation
