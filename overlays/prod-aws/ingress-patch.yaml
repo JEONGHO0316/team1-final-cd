@@ -1,27 +1,33 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: petclinic-ingress  # base/ingress.yaml에 있는 이름과 같아야 함
+  name: petclinic-ingress
   annotations:
-    # 1. 잉그레스 클래스 지정 (필수)
-    kubernetes.io/ingress.class: alb
-    # 2. 인터넷에서 접속 가능하게 설정 (필수)
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    # 3. 트래픽을 파드 IP로 직접 전달 (속도 향상 & 필수)
-    alb.ingress.kubernetes.io/target-type: ip
-    # 4. (선택) 헬스체크 성공 코드 지정
-    alb.ingress.kubernetes.io/success-codes: '200'
-    alb.ingress.kubernetes.io/load-balancer-name: final-project
+    # [1] S3 로깅 설정 (아까 만든 버킷 이름 넣기)
+    alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=my-eks-alb-logs-hjh,access_logs.s3.prefix=ingress-log
+    
+    # [2] 400 에러 강제 발생 액션 정의
     alb.ingress.kubernetes.io/actions.fixed-4xx: >
-      {"type":"fixed-response","fixedResponseConfig":{"statusCode":"400","contentType":"text/plain","messageBody":"Bad Request"}}
+      {"type":"fixed-response","fixedResponseConfig":{"statusCode":"400","contentType":"text/plain","messageBody":"Intentional 400 Error for Testing"}}
+      
 spec:
   rules:
   - http:
       paths:
+      # [3] 기존 메인 앱 (Base에 있지만 명시적으로 유지하거나 Kustomize 전략에 따라 병합됨)
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: fixed-4xx
+            name: petclinic-web-service
+            port:
+              number: 80
+              
+      # [4] 테스트용 400 에러 경로 추가
+      - path: /test-400
+        pathType: Prefix
+        backend:
+          service:
+            name: fixed-4xx # 위의 actions.fixed-4xx 와 매칭됨
             port:
               name: use-annotation

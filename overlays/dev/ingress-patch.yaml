@@ -2,23 +2,38 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: petclinic-ingress
-  # namespace는 적지 마세요 (kustomization.yaml의 설정을 따름)
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/load-balancer-name: final-project-dev
     alb.ingress.kubernetes.io/success-codes: '200'
+    
+    # [중요] 로그 수집을 위해 이 줄이 꼭 있어야 합니다! (버킷 이름 확인)
+    alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=my-eks-alb-logs,access_logs.s3.prefix=ingress-log
+
+    # 400 에러를 강제로 뱉는 가짜 동작 정의
     alb.ingress.kubernetes.io/actions.fixed-4xx: >
-      {"type":"fixed-response","fixedResponseConfig":{"statusCode":"400","contentType":"text/plain","messageBody":"Bad Request"}}
+      {"type":"fixed-response","fixedResponseConfig":{"statusCode":"400","contentType":"text/plain","messageBody":"Bad Request Test Page"}}
+
 spec:
   rules:
   - http:
       paths:
+      # 1. 메인 경로는 실제 서비스로 연결 (원상복구)
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: fixed-4xx
+            name: petclinic-web-service  # 실제 백엔드 서비스 이름
+            port:
+              number: 80
+
+      # 2. 테스트용 경로는 400 에러로 연결 (새로 추가)
+      - path: /test-4xx
+        pathType: Prefix
+        backend:
+          service:
+            name: fixed-4xx            # 위 annotations의 actions.fixed-4xx를 가리킴
             port:
               name: use-annotation
