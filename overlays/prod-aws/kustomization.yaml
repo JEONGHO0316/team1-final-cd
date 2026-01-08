@@ -24,7 +24,7 @@ patches:
 images:
 - name: petclinic-image-placeholder
   newName: 639242342449.dkr.ecr.ap-northeast-2.amazonaws.com/gitactions
-  newTag: v1.1.1.1
+  newTag: v1.1
 - name: petclinic-web-placeholder
   newName: 639242342449.dkr.ecr.ap-northeast-2.amazonaws.com/gitactions
   newTag: web
