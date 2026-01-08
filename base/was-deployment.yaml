@@ -4,7 +4,7 @@ metadata:
   name: petclinic-was
   namespace: petclinic
 spec:
-  replicas: 2
+  replicas: 10
   selector:
     matchLabels:
       app: petclinic-was
